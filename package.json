@@ -22,11 +22,19 @@
     "url": "https://github.com/fptuhe161500/nodejs_bog/issues"
   },
   "homepage": "https://github.com/fptuhe161500/nodejs_bog#readme",
+  "lint-staged": {
+    "*": "your-cmd"
+  },
   "dependencies": {
     "express": "^4.17.3",
-    "express-handlebars": "^6.0.4"
+    "express-handlebars": "^6.0.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.0",
+    "mongoose-slug-generator": "^1.0.4"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
     "morgan": "^1.10.0",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"

@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-
 class NewsController {
   //GET /news
   index(req, res) {
@@ -7,7 +5,7 @@ class NewsController {
   }
   //GET /news/slug
   show(req, res) {
-    res.send("news detail");
+    res.render("courses/create");
   }
 }
 module.exports = new NewsController();
