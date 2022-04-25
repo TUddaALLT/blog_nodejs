@@ -21,10 +21,10 @@
           <td>{{this.level}}</td>
           <td>{{this.createdAt}}</td>
           <td>
-            <a href="/courses/{{this._id}}/edit" class="btn btn-link">Edit</a>
+            <a href="" class="btn btn-link btn-restore" data-id={{this._id}}>Restore</a>
           </td>
           <td>
-            <a href="http://" class="btn btn-link" data-toggle="modal" data-target="#delete-course"
+            <a href="" class="btn btn-link" data-toggle="modal" data-target="#delete-course"
               data-id={{this._id}}>Delete</a>
           </td>
 
@@ -63,19 +63,28 @@
   </div>
 </div>
 <form name="delete-form" method="post"></form>
-<script>
+<form name="restore-form" method="post"></form>
 
-  var CourseID; var btnDeleteCourse =
-    document.getElementById("btn-delete-course"); var deleteForm =
-      document.forms["delete-form"]; document.addEventListener("DOMContentLoaded",
+<script>
+  var restoreForm = document.forms["restore-form"]; var CourseID; var
+    btnDeleteCourse = document.getElementById("btn-delete-course"); var deleteForm
+      = document.forms["delete-form"]; document.addEventListener("DOMContentLoaded",
         function () {
           $('#delete-course').on('show.bs.modal', function (event) {
             var
-              button = $(event.relatedTarget); CourseID = button.data('id');
+            button = $(event.relatedTarget); CourseID = button.data('id');
           });
         });
   btnDeleteCourse.onclick = function () {
-    deleteForm.action = "/courses/" + CourseID
-      + "?_method=DELETE"; deleteForm.submit();
+    deleteForm.action = "/courses/" +
+      CourseID + "?_method=DELETE"; deleteForm.submit();
   }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btnRestore =
+      $(".btn-restore"); btnRestore.click(function (e) {
+        e.preventDefault();
+        restoreForm.action = "/courses/" + $(this).data("id") +
+          "/restore?_method=PATCH"; restoreForm.submit()
+      })
+  });
 </script>

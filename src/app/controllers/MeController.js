@@ -9,5 +9,12 @@ class MeController {
       });
     });
   }
+  trash(req, res) {
+    Course.findDeleted().then((courses) => {
+      res.render("me/trash-courses", {
+        courses: multipleMongooseToObject(courses),
+      });
+    });
+  }
 }
 module.exports = new MeController();

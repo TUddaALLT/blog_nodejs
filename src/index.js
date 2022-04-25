@@ -11,11 +11,7 @@ const db = require("./config/db");
 // connect db
 db.connect();
 const route = require("./routes");
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -40,5 +36,5 @@ app.set("views", path.join(__dirname, "resource", "views"));
 route(app);
 
 app.listen(port, () => {
-  console.log(` app listening on port http://localhost:3000/`);
+  console.log(`  app listening on port http://localhost:3000/`);
 });
